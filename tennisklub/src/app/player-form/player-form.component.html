@@ -1,0 +1,104 @@
+<div class=".root-grid">
+  <form [formGroup]="addUser">
+    <div class="registrationGroup">
+      <h1 id="register">Register</h1>
+      <div class="registrationField" id="name">
+        <mat-form-field
+          appearance="outline"
+          class="registrationField"
+          id="name"
+        >
+          <mat-label>Name:</mat-label>
+          <input
+            matInput
+            [class.is-invalid]="addUser.get('name')?.touched"
+            formControlName="name"
+            placeholder="Anders Andersen"
+          />
+        </mat-form-field>
+        <div *ngIf="addUser.get('name')?.touched">
+          <mat-error *ngIf="addUser.get('name')?.errors?.['required']">Name is required</mat-error>
+        </div>
+      </div>
+
+
+      <div class="registrationField" id="email">
+        <mat-form-field appearance="outline">
+          <mat-label>Email:</mat-label>
+          <input
+            matInput
+            [class.is-invalid]="addUser.get('email')?.invalid && addUser.get('email')?.touched"
+            formControlName="email"
+            placeholder="something@email.com"
+          />
+        </mat-form-field>
+        <div *ngIf="addUser.get('email')?.invalid && addUser.get('email')?.touched">
+          <mat-error *ngIf="addUser.get('email')?.errors?.['required']">Email is required</mat-error>
+          <mat-error *ngIf="addUser.get('email')?.errors?.['email']">You must type a valid Email address</mat-error>
+        </div>
+      </div>
+	
+
+      <div class="registrationField" id="username">
+        <mat-form-field appearance="outline">
+          <mat-label>username:</mat-label>
+          <input
+            matInput
+            [class.is-invalid]="addUser.get('username')?.invalid && addUser.get('username')?.touched"
+            formControlName="username"
+            placeholder="11 22 33 44"
+          />
+        </mat-form-field>
+        <div *ngIf="addUser.get('username')?.touched">
+          <mat-error *ngIf="addUser.get('username')?.errors?.['required']">Username is required</mat-error>
+        </div>
+      </div>
+
+
+      <div class="registrationField" id="phone">
+        <mat-form-field appearance="outline">
+          <mat-label>Phone number:</mat-label>
+          <input
+            matInput
+            [class.is-invalid]="addUser.get('phone')?.invalid && addUser.get('phone')?.touched"
+            formControlName="phone"
+            placeholder="11 22 33 44"
+          />
+        </mat-form-field>
+        <div *ngIf="addUser.get('phone')?.invalid && addUser.get('phone')?.touched">
+          <mat-error *ngIf="addUser.get('phone')?.errors?.['required']">Phone number is required</mat-error>
+          <mat-error *ngIf="addUser.get('phone')?.errors?.['pattern']">Phone number must be 8 numbers long</mat-error>
+        </div>
+      </div>
+
+
+      <div class="registrationField" id="password">
+        <mat-form-field appearance="outline">
+          <mat-label>Password:</mat-label>
+          <input
+            matInput
+            [class.is-invalid]="addUser.get('password')?.touched"
+            formControlName="password"
+            placeholder="********"
+          />
+        </mat-form-field>
+        <div *ngIf="addUser.get('password')?.errors?.['required'] && addUser.get('password')?.touched">
+          <mat-error *ngIf="addUser.get('password')?.errors?.['required']">Password is required</mat-error>
+          <mat-error *ngIf="addUser.get('password')?.errors?.['minLength']">The password must be at least 8 characters long</mat-error>
+          <mat-error *ngIf="addUser.get('password')?.errors?.['maxLength']">The password must be at most 512 characters long</mat-error>
+        </div>
+      </div>
+
+
+      <button
+        mat-raised-button
+        (click)="onSubmit()"
+        color="primary"
+        id="button"
+        class="registrationField"
+      >
+        submit
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,67 @@
+@media screen and (max-width: 800px) {
+  .root-grid {
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "header"
+      "route";
+  }
+}
+
+@media screen and (min-width: 801px) and (max-width: 1300px) {
+  .root-grid {
+    grid-template-columns: 8% 84% 8%;
+    grid-template-areas:
+      "header header header"
+      ". route .";
+  }
+}
+
+@media screen and (min-width: 1301px) {
+  .root-grid {
+    grid-template-columns: 12.5% 75% 12.5%;
+    grid-template-areas:
+      "header header header"
+      ". route .";
+  }
+}
+
+.root-grid {
+  display: grid;
+  grid-template-rows: auto;
+  width: 100%;
+
+  .route {
+    grid-area: route;
+    z-index: 2;
+    padding: 1em;
+  }
+
+  .header {
+    grid-area: header;
+    z-index: 6;
+    position: sticky;
+    top: 0;
+    width: 100%;
+  }
+}
+
+h1 {
+  color: hsl(210, 50%, 40%);
+  font-size: 250%;
+}
+
+h2,
+h3 {
+  color: hsl(0, 0%, 27%);
+  font-weight: lighter;
+}
+
+body {
+  margin: 2em;
+}
+
+body,
+input[type="text"],
+button {
+  color: hsl(0, 0%, 20%);
+}
